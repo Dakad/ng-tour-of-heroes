@@ -1,0 +1,15 @@
+<div class="selected-details" *ngIf="this.selectedHero != null">
+  <h2>Details on
+    <i>{{ selectedHero.name | uppercase }}</i>
+  </h2>
+  <div>
+    <span>ID: </span>#{{selectedHero.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="selectedHero.name" placeholder="Name ...">
+    </label>
+  </div>
+
+</div>
+
+<button (click)="goBack()">Go back</button>
