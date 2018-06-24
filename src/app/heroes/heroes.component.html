@@ -1,13 +1,5 @@
 <app-hero-add (new-hero)="addHero($event)"></app-hero-add>
 
-<h2>My Heroes ({{heroes.length}})</h2>
-<ul class="heroes">
-  <li *ngFor="let hero of heroes" [class.selected]="hero == selectedHero">
-    <a routerLink="/detail/{{hero.id}}">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
-    </a>
-    <button class="delete" title="Delete {{hero.name}}" (click)="delete(hero)">x</button>
-  </li>
-</ul>
+<app-hero-list [list]="heroes" (delete-hero)="deleteHero($event)"></app-hero-list>
 
 <!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail> -->

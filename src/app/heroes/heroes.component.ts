@@ -33,7 +33,7 @@ export class HeroesComponent implements OnInit {
       .subscribe(hero => this.heroes.push(hero));
   }
 
-  delete({ id, name }): void {
+  deleteHero({ id, name }): void {
     const ok = window.confirm(
       `Do u really want to delete Hero #${id} - ${name} ?!?`
     );

@@ -1,0 +1,9 @@
+<h2>My Heroes ({{list.length}})</h2>
+<ul class="heroes">
+  <li *ngFor="let elem of list" [class.selected]="elem == selectedHero">
+    <a routerLink="/detail/{{elem.id}}">
+      <span class="badge">{{elem.id}}</span> {{elem.name}}
+    </a>
+    <button class="delete" title="Delete {{elem.name}}" (click)="delete(elem)">x</button>
+  </li>
+</ul>
