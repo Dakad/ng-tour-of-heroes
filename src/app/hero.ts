@@ -10,6 +10,10 @@ export class Hero {
     fighting: number;
     strength: number;
   };
+
+  public toString(): string {
+    return 'Hero #' + this.id;
+  }
 }
 
 /*
