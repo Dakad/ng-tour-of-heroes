@@ -41,6 +41,9 @@ export class HeroesComponent implements OnInit {
     if (!ok) return;
     this._data
       .deleteHero(id)
-      .subscribe(_ => this.heroes.filter(({ id: heroId }) => heroId != id));
+      .subscribe(
+        _ =>
+          (this.heroes = this.heroes.filter(({ id: heroId }) => heroId != id))
+      );
   }
 }
