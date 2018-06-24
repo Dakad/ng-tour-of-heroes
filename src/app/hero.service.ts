@@ -31,13 +31,25 @@ export class HeroService {
     );
   }
 
-  /** GET: get specific hero by #id from the server */
+  /** GET: get specific hero by #id from the server. Will 404 if id not found  */
   getHero(id: number): Observable<Hero> {
     this.log('Fetching Hero #' + id);
-    const url = `${API_URL}/${id}`;
+    const url = API_URL + '/' + id;
+
     return this.http.get<Hero>(url).pipe(
       tap(_ => this.log(`Fetched hero id=${id}`)),
       catchError(this.handleError<Hero>('getHero id=' + id))
+    );
+  }
+
+  /** GET: get the matching hero by name from the server */
+  searchHeroes(term: string): Observable<Hero[]> {
+    if (!term.trim()) return of([]);
+    const url = API_URL + '/?name=' + term;
+
+    return this.http.get<Hero[]>(url).pipe(
+      tap(list => this.log(`Found ${list.length} heroes matching : '${term}'`)),
+      catchError(this.handleError<Hero[]>('searchHeroes'))
     );
   }
 
