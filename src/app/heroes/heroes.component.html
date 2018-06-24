@@ -1,13 +1,4 @@
-<h2>Newe HERO</h2>
-<div>
-  <label>Hero name:
-    <input #heroName />
-  </label>
-  <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="add(heroName.value); heroName.value=''">
-    Add
-  </button>
-</div>
+<app-hero-add (new-hero)="addHero($event)"></app-hero-add>
 
 <h2>My Heroes ({{heroes.length}})</h2>
 <ul class="heroes">
