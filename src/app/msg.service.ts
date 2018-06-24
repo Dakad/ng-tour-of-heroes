@@ -8,6 +8,10 @@ export class MsgService {
 
   constructor() {}
 
+  get size(): number {
+    return this.list.length;
+  }
+
   add(msg: string): void {
     this.list.push(msg);
     setTimeout(_ => this.list.pop(), 2500);
@@ -17,10 +21,13 @@ export class MsgService {
     this.list = [];
   }
 
-  size(): number {
-    return this.list.length;
+  *[Symbol.iterator]() {
+    for (const msg of this.list) {
+      yield msg;
+    }
   }
 
+  /*
   [Symbol.iterator]() {
     let i = -1;
 
@@ -31,4 +38,5 @@ export class MsgService {
       })
     };
   }
+  */
 }
