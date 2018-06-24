@@ -33,4 +33,14 @@ export class HeroesComponent implements OnInit {
       .addHero({ name } as Hero)
       .subscribe(hero => this.heroes.push(hero));
   }
+
+  delete({ id, name }): void {
+    const ok = window.confirm(
+      `Do u really want to delete Hero #${id} - ${name} ?!?`
+    );
+    if (!ok) return;
+    this._data
+      .deleteHero(id)
+      .subscribe(_ => this.heroes.filter(({ id: heroId }) => heroId != id));
+  }
 }
