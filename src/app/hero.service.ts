@@ -21,9 +21,10 @@ export class HeroService {
   }
 
   getHeroes(): Observable<Hero[]> {
-    // TODO: send the message _after_ fetching the heroes
-    this.log('Fetching heroes ...');
-    return this.http.get<Hero[]>(API_URL);
+    return this.http.get<Hero[]>(API_URL).pipe(
+      tap(_ => this.log('Fetching heroes ...')),
+      catchError(this.handleError('Get list of heroes', []))
+    );
   }
 
   getHero(id: number): Observable<Hero> {
@@ -41,14 +42,10 @@ export class HeroService {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-  private handleError<T>(operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'fetching', result?: T) {
     return (error: any): Observable<T> => {
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
+      console.error(error);
       this.log(`${operation} failed: ${error.message}`);
-
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };

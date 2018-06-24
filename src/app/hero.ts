@@ -1,8 +1,18 @@
 export class Hero {
   id: number;
   name: string;
+  characteristics: Array<string>;
+  powers: {
+    level: number;
+    damage: number;
+    speed: number;
+    energy: number;
+    fighting: number;
+    strength: number;
+  };
 }
 
+/*
 export const HEROES: Hero[] = [
   { id: 1009187 | 1011130, name: 'Black Panther' },
   { id: 1009220 | 1010913, name: 'Captain America' },
@@ -13,3 +23,4 @@ export const HEROES: Hero[] = [
   { id: 1009262, name: 'Daredevil' },
   { id: 1009282, name: 'Doctor Strange' }
 ];
+*/
