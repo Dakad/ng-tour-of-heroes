@@ -14,8 +14,8 @@ import { HeroService } from '../hero.service';
   `
 })
 export class HeroesComponent implements OnInit {
-  private heroes: Hero[] = [];
-  private selectedHero: Hero;
+  heroes: Hero[] = [];
+  selectedHero: Hero;
 
   constructor(private _data: HeroService) {
     // this.selectedHero = this.heroes[0];
