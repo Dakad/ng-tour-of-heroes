@@ -4,8 +4,14 @@ import { HeroService } from '../hero.service';
 
 @Component({
   selector: 'app-heroes',
-  templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.css']
+  styleUrls: ['./heroes.component.css'],
+  template: `
+      <app-hero-add (new-hero)="addHero($event)"> </app-hero-add>
+
+      <app-hero-list [list]="heroes" (delete-hero)="deleteHero($event)"> </app-hero-list>
+
+      <!-- <app-hero-detail [hero]="selectedHero"> </app-hero-detail> -->
+  `
 })
 export class HeroesComponent implements OnInit {
   private heroes: Hero[] = [];
